@@ -1,24 +1,28 @@
-import { NextResponse } from 'next/server';
-import NextAuth from 'next-auth';
-import { authConfig } from '../../auth/[...nextauth]/auth.config';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextResponse } from "next/server";
+import NextAuth from "next-auth";
+import { authConfig } from "../../auth/[...nextauth]/auth.config";
+import { NextApiRequest, NextApiResponse } from "next";
 
 // set runtime to Edge
-export const runtime = 'edge';
+export const runtime = "edge";
 
 /**
  * SOLUTION 1: CHANGING TO JWT STRATEGY WITH A DATABASE
  */
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
-  const { auth } = NextAuth(authConfig);
+// export async function GET(req: NextApiRequest, res: NextApiResponse) {
+//   const { auth } = NextAuth(authConfig);
 
-  const session = auth(req, res);
+//   const session = auth(req, res);
 
-  if (!session) {
-    return NextResponse.json({ error: 'not signed in' }, { status: 401 });
-  }
+//   if (!session) {
+//     return NextResponse.json({ error: "not signed in" }, { status: 401 });
+//   }
 
-  return NextResponse.json({ data: 'you got it' }, { status: 200 });
+//   return NextResponse.json({ data: "you got it" }, { status: 200 });
+// }
+export async function GET() {
+  
+  return NextResponse.json({ data: "you got it" }, { status: 200 });
 }
 
 /**
